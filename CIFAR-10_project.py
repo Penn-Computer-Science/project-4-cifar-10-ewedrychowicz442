@@ -45,7 +45,7 @@ y_train = to_categorical(y_train, 10)
 y_test = to_categorical(y_test, 10)
 
 #show an example image from MNIST
-plt.imshow(x_train[random.randint(0, 59999)][:, :, 0], cmap = 'gray') #showsa random image in the training set, all rows and columns, color channel 0 (grayscale), cmap makes it gray
+plt.imshow(x_train[5][:, :, 0]) #showsa random image in the training set, all rows and columns, color channel 0 (grayscale), cmap makes it gray
 plt.show()
 
 batch_size = 80 #number of images to process at a time, then upadates weights (more complicated images require smaller batch sizes)
@@ -56,15 +56,15 @@ epochs = 10 #number of times to go through the entire dataset during training
 model = tf.keras.models.Sequential(
     [
         tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #first convolutional layer, 32 filters, 5x5 kernel, same padding, relu activation function, input shape doesn't change
-        tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
+        #tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
         tf.keras.layers.MaxPool2D(), #reduces the size of the image
         tf.keras.layers.Dropout(0.25), #randomly turns off 25% of the neurons to prevent overfitting, forces it to actually learn instead of memorize
         tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #another convolutional layer with 64 filters (kernals), finer filter but same sized comb (more teeth)
-        tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
+        #tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
         tf.keras.layers.MaxPool2D(), #reduces the size of the image
         tf.keras.layers.Dropout(0.25), #randomly turns off 25% of the neurons to prevent overfitting, forces it to actually learn instead of memorizetf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #another convolutional layer with 64 filters (kernals), finer filter but same sized comb (more teeth)
         tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #another convolutional layer with 64 filters (kernals), finer filter but same sized comb (more teeth)
-        tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
+        #tf.keras.layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
         tf.keras.layers.MaxPool2D(), #reduces the size of the image
         tf.keras.layers.Dropout(0.25), #randomly turns off 25% of the neurons to prevent overfitting, forces it to actually learn instead of memorize
         tf.keras.layers.Flatten(), #flattens the 2D matrix into a 1D array for the dense layers

@@ -57,7 +57,7 @@ epochs = 5 #number of times to go through the entire dataset during training
 #build the model
 model = tf.keras.models.Sequential(
     [
-        tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu', input_shape=input_shape), #first convolutional layer, 32 filters, 5x5 kernel, same padding, relu activation function, input shape doesn't change
+        tf.keras.layers.Conv2D(32, (5,5), padding='same', activation='relu', input_shape=input_shape), #first convolutional layer, 32 filters, 5x5 kernel, same padding, relu activation function, input shape doesn't change
         tf.keras.layers.Conv2D(32, (3,3), padding='same', activation='relu', input_shape=input_shape), #same as above but finer combing (3 x 3)
         tf.keras.layers.MaxPool2D(), #reduces the size of the image
         tf.keras.layers.Dropout(0.25), #randomly turns off 25% of the neurons to prevent overfitting, forces it to actually learn instead of memorize
